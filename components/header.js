@@ -5,8 +5,8 @@ function Header() {
    <main>
     <header>
     <nav>
+        {/* <img src="">Logo</img> */}
         <Link href="/presentation">Presentation</Link>
-        <p></p>
         <Link href="/events">Events</Link>
       </nav>
     </header>
