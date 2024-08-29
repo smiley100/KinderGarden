@@ -5,8 +5,9 @@ const Events  = () => {
   return (
 
     <main>
-
+      the events hear.....
       <Link href="./presentation">Presentation</Link>
+      <Link href="../">Acceuille</Link>
      
       </main>
   )

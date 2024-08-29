@@ -4,10 +4,10 @@ import Link from 'next/link'
 const Presentation  = () => {
   return (
     <main>
-      <div>Presentation </div>
-      <Link href="./events">events</Link>
-     
-      </main>
+      <div>The presentation page </div>
+      <Link href="./events">Events</Link>
+      <Link href='../'>Acceuille</Link>
+    </main>
     
   )
 }
