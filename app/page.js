@@ -8,7 +8,6 @@ export default function Home() {
     <div>
       <Header/>
       <Section/>
-      {/* <Section2/> */}
       <Footer/>
     </div>
   )

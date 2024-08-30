@@ -5,8 +5,8 @@ const Presentation  = () => {
   return (
     <main>
       <div>The presentation page </div>
-      <Link href="./events">Events</Link>
-      <Link href='../'>Acceuille</Link>
+      <div><Link href="./events">Events</Link></div>
+      <div><Link href='../'>Acceuille</Link></div>
     </main>
     
   )

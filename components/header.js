@@ -6,11 +6,15 @@ function Header() {
     <header>
     <nav>
         {/* <img src="">Logo</img> */}
+      <div>
         <Link href="/presentation">Presentation</Link>
-        <p></p>
+      </div>
+      <div>
         <Link href="/events">Events</Link>
-        <p></p>
-        <Link href="/personnel">Notre personnel</Link>
+      </div>
+      <div>
+      <Link href="/personnel">Notre personnel</Link>
+      </div>
       </nav>
     </header>
    </main>

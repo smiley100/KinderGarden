@@ -1,11 +1,29 @@
-import path from 'path';
-import fs from 'fs/promises';
-import React from 'react';
+export async function getServerSideProps() {
+  try {
+    const response = await fetch('http://localhost:3000/data.json');
+    if (!response.ok) {
+      throw new Error('Network error');
+    }
+    const data = await response.json();
 
-async function Personnel() {
-  const filePath = path.join(process.cwd(), 'public', 'data.json');
-  const jsonData = await fs.readFile(filePath, 'utf-8');
-  const data = JSON.parse(jsonData);
+    return {
+      props: { data },
+    };
+  } catch (error) {
+    console.error('Failed to fetch data:', error.message);
+    return {
+      props: {
+        data: [], 
+        error: 'Failed to fetch data',
+      },
+    };
+  }
+}
+
+function Personnel({ data, error }) {
+  if (error) {
+    return <div>{error}</div>;
+  }
 
   if (!Array.isArray(data)) {
     return <div>Erreur: Les données ne sont pas sous la forme attendue.</div>;
@@ -13,16 +31,14 @@ async function Personnel() {
 
   return (
     <div>
-      <h1>Notre cher personnel</h1>
+      <h1>Personnel List</h1>
       <ul>
         {data.map((item, index) => (
-          <li key={index}>
-            {item.prenom} {item.nom}
-          </li>
+          <li key={index}>{item.nom} {item.prenom}</li>
         ))}
       </ul>
     </div>
   );
 }
 
-export default Personnel;
+export default Personnel
