@@ -4,8 +4,8 @@ import React from 'react'
 export default function Section() {
   return (
     <div>
-      <img src="/images/principale.jpg" alt="Kinder Garden"/>
-   
+      <div><img src="/images/cover/principale.jpg" alt="Kinder Garden"/></div>
+      <div>
       <h2>Garderie</h2>
       <h3>Jardins d'enfants</h3>
       <h4>Avec son toit pointu, ses colombages rouges et ses jardinières fleuries, notre jardin d'enfants a tout d'une vraie maison.</h4>
@@ -21,6 +21,8 @@ export default function Section() {
         <li>1 homme de cour</li>
         <li>1 médecin & 1 psychologue</li>
       </ul>
+      </div>
+      
     </div>
 )
 }

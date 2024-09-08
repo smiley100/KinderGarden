@@ -1,39 +1,38 @@
-export async function getServerSideProps() {
-  try {
-    const response = await fetch('http://localhost:3000/data.json');
-    if (!response.ok) {
-      throw new Error('Network error');
-    }
-    const data = await response.json();
+"use client";
 
-    return {
-      props: { data },
-    };
-  } catch (error) {
-    console.error('Failed to fetch data:', error.message);
-    return {
-      props: {
-        data: [], 
-        error: 'Failed to fetch data',
-      },
-    };
-  }
-}
+import { useState, useEffect } from 'react';
 
-function Personnel({ data, error }) {
+function Personnel() {
+  const [content, setContent] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch('/data.json');
+        if (!response.ok) {
+          throw new Error('Failed to fetch data');
+        }
+        const data = await response.json();
+        setContent(data);
+      } catch (error) {
+        console.error('Failed to fetch data:', error.message);
+        setError('Failed to fetch data');
+      }
+    };
+
+    fetchData();
+  }, []);
+
   if (error) {
     return <div>{error}</div>;
-  }
-
-  if (!Array.isArray(data)) {
-    return <div>Erreur: Les données ne sont pas sous la forme attendue.</div>;
   }
 
   return (
     <div>
       <h1>Personnel List</h1>
       <ul>
-        {data.map((item, index) => (
+        {content.map((item, index) => (
           <li key={index}>{item.nom} {item.prenom}</li>
         ))}
       </ul>
@@ -41,4 +40,4 @@ function Personnel({ data, error }) {
   );
 }
 
-export default Personnel
+export default Personnel;
